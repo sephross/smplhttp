@@ -14,7 +14,7 @@ func smplHandler(rw http.ResponseWriter, r *http.Request) {
 }
 
 func smplDate(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(rw, "$v", time.Now())
+	fmt.Fprint(rw, time.Now())
 }
 
 func main() {
