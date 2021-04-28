@@ -18,10 +18,10 @@ func smplDate(rw http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	mux := mux.NewRouter()
-	mux.HandleFunc("/", smplHandler).Methods("GET")
-	mux.HandleFunc("/date", smplDate).Methods("GET")
+	r := mux.NewRouter()
+	r.HandleFunc("/", smplHandler).Methods("GET")
+	r.HandleFunc("/date", smplDate).Methods("GET")
 
 	println("smplsrv is listening on 3090...")
-	log.Fatal(http.ListenAndServe(":3090", mux))
+	log.Fatal(http.ListenAndServe(":3090", r))
 }
