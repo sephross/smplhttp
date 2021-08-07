@@ -4,24 +4,31 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/gorilla/mux"
 )
 
-func smplHandler(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(rw, "time to hit the hay.")
+func getStatus(rw http.ResponseWriter, r *http.Request) {
+	fmt.Fprint(rw, "status:okay")
 }
 
-func smplDate(rw http.ResponseWriter, r *http.Request) {
+func getDateTime(rw http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(rw, time.Now())
+}
+
+func exitContd(rw http.ResponseWriter, r *http.Request) {
+	fmt.Fprint(rw, "status:exit")
+	os.Exit(1)
 }
 
 func main() {
 	r := mux.NewRouter()
-	r.HandleFunc("/", smplHandler).Methods("GET")
-	r.HandleFunc("/date", smplDate).Methods("GET")
+	r.HandleFunc("/", getStatus).Methods("GET")
+	r.HandleFunc("/time", getDateTime).Methods("GET")
+	r.HandleFunc("/exit", exitContd).Methods("GET")
 
-	println("smplsrv is listening on 3090...")
-	log.Fatal(http.ListenAndServe(":3090", r))
+	println("smplsrv is listening on 9090...")
+	log.Fatal(http.ListenAndServe(":9090", r))
 }
