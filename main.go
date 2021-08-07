@@ -29,6 +29,6 @@ func main() {
 	r.HandleFunc("/time", getDateTime).Methods("GET")
 	r.HandleFunc("/exit", exitContd).Methods("GET")
 
-	println("smplsrv is listening on 9090...")
-	log.Fatal(http.ListenAndServe(":9090", r))
+	println("smplsrv is listening on 8080...")
+	log.Fatal(http.ListenAndServe(":8080", r))
 }
