@@ -1,4 +1,4 @@
-#### simple http server
+# simple http server
 - simple http server used for k8s testing.
 - <code>/</code> returns status:okay
 - <code>/time</code> returns current time
